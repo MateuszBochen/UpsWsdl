@@ -160,8 +160,11 @@ class ShipService extends \SoapClient
      * @param array $options A array of config values
      * @param string $wsdl The wsdl file to use
      */
-    public function __construct(array $options = array(), $wsdl = '../Wsdls/Ship.wsdl')
+    public function __construct(array $options = array(), $wsdl = 'Ship.wsdl')
     {
+
+      $wsdl = dirname(__FILE__).'/../../Wsdls/'.$wsdl;
+
       foreach (self::$classmap as $key => $value) {
         if (!isset($options['classmap'][$key])) {
           $options['classmap'][$key] = $value;
